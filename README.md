@@ -1,12 +1,26 @@
 # T3chFlicks - API with ALB and Lambda
-A Hello World example of an API created using 
+An example of an API created using 
 AWS Lambda and Application Load Balancer. 
 See the accompanying blog post [here](https://medium.com/p/b32b126bbddc).
 
-### Usage
+# Usage
+### Service 1
 ```
 $ curl loadb-LoadB-R7RVQD09YC9O-1401336014.eu-west-1.elb.amazonaws.com
 Hello World!
+```
+
+### Service 2
+```
+$ curl --location --request POST 'loadb-LoadB-R7RVQD09YC9O-1401336014.eu-west-1.elb.amazonaws.com' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+ "text": "This is great! I can't wait to implement it myself!"
+}'
+{
+ "received": "This is great! I can't wait to implement it myself!"
+}
+
 ```
 
 ### Architecture
@@ -16,8 +30,11 @@ Hello World!
 1. Deploy VPC
     * `aws cloudformation create-stack --stack-name vpc --template-body file://aws/vpc.yml --capabilities CAPABILITY_NAMED_IAM`
     * tutorial for VPC can be found [here](insert_medium_link)
-1. Deploy Service
-    * `aws cloudformation create-stack --stack-name service --template-body file://aws/service.yml --capabilities CAPABILITY_NAMED_IAM`
+1. Deploy Service One
+    * `aws cloudformation create-stack --stack-name service --template-body file://aws/service_1.yml --capabilities CAPABILITY_NAMED_IAM`
+
+1. Deploy Service Two
+    * `aws cloudformation create-stack --stack-name service --template-body file://aws/service_2.yml --capabilities CAPABILITY_NAMED_IAM`
 
 ---
 

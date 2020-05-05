@@ -64,8 +64,14 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        Zip: |
-        
+        ZipFile: |
+        def handler(event, context):
+          response = {
+            'isBase64Encoded': False,
+            'statusCode': 200,
+            'body': 'HELLO WORLD!'
+          }
+          return response        
       Description: AWS Lambda function
       FunctionName: 'lambda-function'
       Handler: lambda_function.handler
