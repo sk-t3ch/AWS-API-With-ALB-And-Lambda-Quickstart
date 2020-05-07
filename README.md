@@ -1,7 +1,7 @@
 # T3chFlicks - API with ALB and Lambda
 An example of an API created using 
 AWS Lambda and Application Load Balancer. 
-See the accompanying blog post [here](https://medium.com/p/b32b126bbddc).
+See the accompanying blog post [here](https://medium.com/@t3chflicks/cheaper-than-api-gateway-alb-with-lambda-using-cloudformation-b32b126bbddc).
 
 ### Usage
 ```
