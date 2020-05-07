@@ -15,7 +15,7 @@ Hello World!
 ### Setup
 1. Deploy VPC
     * `aws cloudformation create-stack --stack-name vpc --template-body file://aws/vpc.yml --capabilities CAPABILITY_NAMED_IAM`
-    * tutorial for VPC can be found [here](insert_medium_link)
+    * tutorial for VPC can be found [here](https://medium.com/@t3chflicks/virtual-private-cloud-on-aws-quickstart-with-cloudformation-4583109b2433)
 1. Deploy Service
     * `aws cloudformation create-stack --stack-name service --template-body file://aws/service.yml --capabilities CAPABILITY_NAMED_IAM`
 1. Deploy Service with CORS enabled
