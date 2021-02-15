@@ -32,12 +32,6 @@ The complete CloudFormation templates can be found [here](https://github.com/sk-
 
 To create a Lambda using CloudFormation, it is necessary to define a Lambda Function, a Role to run the Lambda and a Permission for the ALB to invoke the Lambda:
 
-
-
-### Application Load Balancer
-
-The Load Balancer is placed across public subnets as it needs to be accessible **from** the internet. The ALB is configured to listen to HTTP traffic on port 80 and forward it to the Lambda:
-
     Lambda:
         Type: AWS::Lambda::Function
         Properties:
@@ -74,6 +68,48 @@ The Load Balancer is placed across public subnets as it needs to be accessible *
         Action: 'lambda:InvokeFunction'
         Principal: elasticloadbalancing.amazonaws.com
 
+
+### Application Load Balancer
+
+The Load Balancer is placed across public subnets as it needs to be accessible **from** the internet. The ALB is configured to listen to HTTP traffic on port 80 and forward it to the Lambda:
+
+    LoadBalancerSecGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+        GroupDescription: Load balance allow port 80 traffic
+        VpcId: !ImportValue VPCID
+        SecurityGroupIngress:
+            CidrIp: 0.0.0.0/0
+            FromPort: 80
+            IpProtocol: TCP
+            ToPort: 80
+
+    LoadBalancer:
+        Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+        Properties:
+        SecurityGroups:
+            - !Ref LoadBalancerSecGroup
+        Subnets:
+            - !ImportValue PublicSubnetA
+            - !ImportValue PublicSubnetB
+
+    LoadBalancerListener:
+        Type: AWS::ElasticLoadBalancingV2::Listener
+        Properties:
+        Protocol: HTTP
+        LoadBalancerArn: !Ref LoadBalancer
+        DefaultActions:
+            - Type: forward
+            TargetGroupArn: !Ref LoadBalancerTargetGroup
+        Port: 80
+
+    LoadBalancerTargetGroup:
+        Type: AWS::ElasticLoadBalancingV2::TargetGroup
+        Properties:
+        TargetType: lambda
+        Targets:
+            - AvailabilityZone: all
+            Id: !GetAtt Lambda.Arn
 
 
 The complete code can be accessed [here](https://github.com/sk-t3ch/AWS-API-With-ALB-And-Lambda-Quickstart) and can be deployed using the AWS CLI:
