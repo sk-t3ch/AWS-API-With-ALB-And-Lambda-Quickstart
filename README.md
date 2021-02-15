@@ -1,16 +1,17 @@
-# T3chFlicks - API with ALB and Lambda
-An example of an API created using 
-AWS Lambda and Application Load Balancer. 
-See the accompanying blog post [here](https://medium.com/@t3chflicks/cheaper-than-api-gateway-alb-with-lambda-using-cloudformation-b32b126bbddc).
+# [T3chFlicks](https://t3chflicks.org): AWS API with ALB and Lambda Quickstart
+> Quickstart for running an example API on AWS with Application Load Balancer and Lambda.
+
+### Read The Blog Post ([github](./blog_post.md)/[medium](https://medium.com/@t3chflicks/cheaper-than-api-gateway-alb-with-lambda-using-cloudformation-b32b126bbddc)).
+
+
+### Architecture
+> ![Architecture](./architecture.png)
 
 ### Usage
 ```
 $ curl loadb-LoadB-R7RVQD09YC9O-1401336014.eu-west-1.elb.amazonaws.com
 Hello World!
 ```
-
-### Architecture
-![Architecture](./architecture.png)
 
 ### Setup
 1. Deploy VPC
@@ -23,7 +24,7 @@ Hello World!
 
 ---
 
-This project was created by [T3chFlicks](https://t3chflicks.org) a tech focused education and service company.
+This project was created by [T3chFlicks](https://t3chflicks.org) - A tech focused education and services company.
 
 ---
 
