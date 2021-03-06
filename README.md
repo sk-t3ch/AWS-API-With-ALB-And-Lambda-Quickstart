@@ -1,7 +1,15 @@
 # [T3chFlicks](https://t3chflicks.org): AWS API with ALB and Lambda Quickstart
 > Quickstart for running an example API on AWS with Application Load Balancer and Lambda.
+![thumbnail](./thumbnail.png)
 
-### Read The Blog Post ([github](./blog_post.md)/[medium](https://medium.com/@t3chflicks/cheaper-than-api-gateway-alb-with-lambda-using-cloudformation-b32b126bbddc)).
+---
+
+## `tutorials/`
+
+
+[![Generic badge](https://img.shields.io/badge/Blog_Post-Github-orange.svg)](./blog_post.md)
+
+[![Generic badge](https://img.shields.io/badge/Blog_Post-Medium-blue.svg)](https://medium.com/@t3chflicks/cheaper-than-api-gateway-alb-with-lambda-using-cloudformation-b32b126bbddc)
 
 
 ### Architecture
